@@ -16,7 +16,7 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="mc"
+PKG_NAME="mcArtUrlWWW"
 PKG_VERSION="4.8.7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
