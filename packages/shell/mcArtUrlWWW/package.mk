@@ -24,31 +24,38 @@ PKG_SITE="http://www.midnight-commander.org/"
 #PKG_URL="http://www.midnight-commander.org/downloads/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_URL="http://www.midnight-commander.org/downloads/mc-$PKG_VERSION.tar.bz2"
 #PKG_SOURCE_DIR="${PKG_NAME}${PKG_VERSION}"
-PKG_DEPENDS_TARGET="glib slang toolchain glib"
+PKG_DEPENDS_TARGET="toolchain gettext:host glib libssh2 libtool:host ncurses pcre"
 PKG_SECTION="shell/filemanager"
 PKG_SHORTDESC="mc: free cross-platform filemanager"
 PKG_LONGDESC="Midnight Commander - free cross-platform filemanager and clone of Norton Commander"
 #PKG_TOOLCHAIN="manual"
 #PKG_TOOLCHAIN="autotools"
 
-PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr \
-							--exec-prefix=/usr \
-							--without-gpm-mouse \
-							--disable-vfs-cpio \
-							--disable-vfs-fish \
-							--disable-vfs-sfs \
-							--enable-vsf-extfs \
-							--without-mmap \
-								--with-subshell \
-							--with-edit \
-							--without-x \
-							--enable-charset \
-							--enable-background \
-							--with-screen=slang \
-							fu_cv_sys_stat_statfs2_bsize=yes"
+PKG_CONFIGURE_OPTS_TARGET=" \
+  --datadir=/storage/.kodi/addons/virtual.system-tools/data \
+  --libdir=/storage/.kodi/addons/virtual.system-tools/mclib \
+  --sysconfdir=/storage/.kodi/addons/virtual.system-tools/etc \
+  --with-screen=ncurses \
+  --with-sysroot=$SYSROOT_PREFIX \
+  --disable-aspell \
+  --without-diff-viewer \
+  --disable-doxygen-doc \
+  --disable-doxygen-dot \
+  --disable-doxygen-html \
+  --with-gnu-ld \
+  --without-libiconv-prefix \
+  --without-libintl-prefix \
+  --with-internal-edit \
+  --disable-mclib \
+  --with-subshell \
+  --enable-vfs-extfs \
+  --enable-vfs-ftp \
+  --enable-vfs-sftp \
+  --enable-vfs-tar \
+  --without-x"
 							
 pre_configure_target() { 
-	export LDFLAGS="$LDFLAGS -lvchiq_arm"
+	LDFLAGS="$LDFLAGS -lcrypto -lssl"
 }
 
 
