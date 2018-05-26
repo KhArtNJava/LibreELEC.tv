@@ -58,12 +58,6 @@ pre_configure_target() {
 	LDFLAGS="$LDFLAGS -lcrypto -lssl"
 }
 
-
-make_target() {
-  make CC=$CC CPP=$CPP RANLIB=$RANLIB AR=$AR STRIP=$STRIP LOCAL_ZIP="$CFLAGS" \
-       -f unix/Makefile generic
-}
-
 makeinstall_target() {
   mkdir -p $INSTALL/usr/bin
     cp zip $INSTALL/usr/bin
