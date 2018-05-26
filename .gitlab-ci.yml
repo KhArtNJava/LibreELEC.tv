@@ -1,0 +1,19 @@
+image: arturlwww/libreelecbuildsystemubuntu16.04:latest
+
+    
+my-build:  
+  stage: build
+  
+  tags:
+#    - gitlab-org-high-cpu
+   - 2gb
+    # - docker
+    # - artfunpw
+    # - artfunpwv2_1
+    # - artfunpwv2
+  
+  
+  script:    
+   - PROJECT=Amlogic DEVICE=S912 ARCH=arm tools/download-tool
+   - PROJECT=Amlogic DEVICE=S912 ARCH=arm make image -j 4
+   
