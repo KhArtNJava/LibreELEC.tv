@@ -6,14 +6,14 @@ my-build:
   
   tags:
 #    - gitlab-org-high-cpu
-   - 2gb
+   # - 2gb
     # - docker
     # - artfunpw
     # - artfunpwv2_1
-    # - artfunpwv2
+    - artfunpwv2
   
   
   script:    
    - PROJECT=Amlogic DEVICE=S912 ARCH=arm tools/download-tool >> 1.log
-   - PROJECT=Amlogic DEVICE=S912 ARCH=arm make image -j 15
+   - PROJECT=Amlogic DEVICE=S912 ARCH=arm make image -j 4
    
