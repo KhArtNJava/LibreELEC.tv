@@ -15,5 +15,5 @@ my-build:
   
   script:    
    - PROJECT=Amlogic DEVICE=S912 ARCH=arm tools/download-tool
-   - PROJECT=Amlogic DEVICE=S912 ARCH=arm make image -j 4
+   - PROJECT=Amlogic DEVICE=S912 ARCH=arm make image -j 15
    
