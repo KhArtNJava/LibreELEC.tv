@@ -1,33 +1,16 @@
-################################################################################
-#      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
-#
-#  OpenELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  OpenELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+# Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="xorg-server"
-PKG_VERSION="1.19.6"
-PKG_SHA256="a732502f1db000cf36a376cd0c010ffdbf32ecdd7f1fa08ba7f5bdf9601cc197"
-PKG_ARCH="any"
+PKG_VERSION="1.20.3"
+PKG_SHA256="1b3ce466c12cacbe2252b3ad5b0ed561972eef9d09e75900d65fb1e21f9201de"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.X.org"
 PKG_URL="http://xorg.freedesktop.org/archive/individual/xserver/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain util-macros font-util fontsproto randrproto recordproto renderproto dri2proto dri3proto fixesproto damageproto videoproto inputproto xf86dgaproto xf86vidmodeproto xf86driproto xf86miscproto presentproto libpciaccess libX11 libXfont2 libXinerama libxshmfence libxkbfile libdrm openssl freetype pixman fontsproto systemd xorg-launch-helper"
+PKG_DEPENDS_TARGET="toolchain util-macros font-util xorgproto libpciaccess libX11 libXfont2 libXinerama libxshmfence libxkbfile libdrm openssl freetype pixman systemd xorg-launch-helper"
 PKG_NEED_UNPACK="$(get_pkg_directory xf86-video-nvidia) $(get_pkg_directory xf86-video-nvidia-legacy)"
-PKG_SECTION="x11/xserver"
-PKG_SHORTDESC="xorg-server: The Xorg X server"
-PKG_LONGDESC="Xorg is a full featured X server that was originally designed for UNIX and UNIX-like operating systems running on Intel x86 hardware."
+PKG_LONGDESC="Xorg is a full featured X server running on Intel x86 hardware."
 PKG_TOOLCHAIN="autotools"
 
 get_graphicdrivers
@@ -40,7 +23,7 @@ else
 fi
 
 if [ ! "$OPENGL" = "no" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET glproto $OPENGL libepoxy"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL libepoxy"
   XORG_MESA="--enable-glx --enable-dri --enable-glamor"
 else
   XORG_MESA="--disable-glx --disable-dri --disable-glamor"
@@ -56,7 +39,7 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-debug \
                            --disable-xselinux \
                            $XORG_COMPOSITE \
                            --enable-mitshm \
-                           --disable-xres \
+                           --enable-xres \
                            --enable-record \
                            --enable-xv \
                            --disable-xvmc \
@@ -73,7 +56,6 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-debug \
                            --disable-xace \
                            --disable-xselinux \
                            --disable-xcsecurity \
-                           --disable-tslib \
                            --enable-dbe \
                            --disable-xf86bigfont \
                            --enable-dpms \
@@ -101,11 +83,6 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-debug \
                            --disable-xwin \
                            --disable-kdrive \
                            --disable-xephyr \
-                           --disable-xfake \
-                           --disable-xfbdev \
-                           --disable-kdrive-kbd \
-                           --disable-kdrive-mouse \
-                           --disable-kdrive-evdev \
                            --disable-libunwind \
                            --enable-xshmfence \
                            --disable-install-setuid \

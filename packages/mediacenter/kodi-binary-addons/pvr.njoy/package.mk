@@ -1,24 +1,10 @@
-################################################################################
-#      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
-#
-#  OpenELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  OpenELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+# Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="pvr.njoy"
-PKG_VERSION="bd6581f"
-PKG_SHA256="f99f4b31577b3c388183fc1c4aef3f4fde077e7df84e84b643ff5cdeb61fb221"
+PKG_VERSION="4467cacf819d7312482635ac45ddd52cd61ab6e0"
+PKG_SHA256="a53afb0fac615d072975ba306ede4985e5c6f4a69a34656c6c22dbf31b39511b"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

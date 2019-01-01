@@ -1,3 +1,12 @@
+108
+- Update to version 1d125d8
+  * Kodi 18 fix merged
+  * Fix for segfaults
+
+107
+- Update to version dc6a602
+- Use correct OnAVStart event on Kodi 18
+
 106
 - Update to version 1c21232
 

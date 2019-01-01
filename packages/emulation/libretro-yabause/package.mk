@@ -1,32 +1,13 @@
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-present Team LibreELEC
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="libretro-yabause"
-PKG_VERSION="3c1f22e"
-PKG_SHA256="267229662a6ca5f28b14ee8cb78949459e178fb27410ba40a962b10914c078e5"
-PKG_ARCH="any"
+PKG_VERSION="aa15301b1d1b49d035d0672a1ccaa5631211b29b"
+PKG_SHA256="268e356c6c3f30a88f8cd3394a48d863d3166cbc060fe7e7eb02be4a93a38f7c"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/yabause"
 PKG_URL="https://github.com/libretro/yabause/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="yabause-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="game.libretro.yabause: Yabause for Kodi"
 PKG_LONGDESC="game.libretro.yabause: Yabause for Kodi"
 PKG_TOOLCHAIN="manual"
 

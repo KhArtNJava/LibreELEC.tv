@@ -1,31 +1,13 @@
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-present Team LibreELEC
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="libretro-handy"
-PKG_VERSION="a3d88fe"
-PKG_SHA256="2f73151d53d866a0ef64cf1e7d24f9fb41483fe26fd22d0ee8a3e012aafe2e19"
-PKG_ARCH="any"
+PKG_VERSION="08cc63376cd8886aea6e6cd38297ba7c9ea0344c"
+PKG_SHA256="e2e70fcf4d983549fa2a33791cd570958087f4dbf3664374dcc38a82d29139ce"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/libretro-handy"
 PKG_URL="https://github.com/libretro/libretro-handy/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="game.libretro.handy: handy for Kodi"
 PKG_LONGDESC="game.libretro.handy: handy for Kodi"
 
 PKG_LIBNAME="handy_libretro.so"

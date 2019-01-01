@@ -1,25 +1,11 @@
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2009-2016 Lukas Rusak (lrusak@libreelec.tv)
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2009-2016 Lukas Rusak (lrusak@libreelec.tv)
+# Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="peripheral.joystick"
-PKG_VERSION="80224e1"
-PKG_SHA256="6982014982fd3883ae39fd1e6ad6f71c0e940da825390de7494e87d1c18ca0ea"
-PKG_REV="1"
+PKG_VERSION="1f4225a28b0ee34d43e9ee4e486a85b93e4c1b53"
+PKG_SHA256="030ecc6660c42e27715d921b214d22e305651982d6cd4c96c2d2ab9b772d7759"
+PKG_REV="100"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/xbmc/peripheral.joystick"
@@ -28,6 +14,7 @@ PKG_DEPENDS_TARGET="toolchain kodi-platform p8-platform"
 PKG_SECTION=""
 PKG_SHORTDESC="peripheral.joystick: Joystick support in Kodi"
 PKG_LONGDESC="peripheral.joystick provides joystick support and button mapping"
+PKG_BUILD_FLAGS="+lto"
 
-PKG_IS_ADDON="yes"
+PKG_IS_ADDON="embedded"
 PKG_ADDON_TYPE="kodi.peripheral"

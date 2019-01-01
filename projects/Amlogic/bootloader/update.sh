@@ -1,28 +1,15 @@
 #!/bin/sh
 
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2017-present Team LibreELEC
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2017-present Team LibreELEC (https://libreelec.tv)
 
 [ -z "$SYSTEM_ROOT" ] && SYSTEM_ROOT=""
 [ -z "$BOOT_ROOT" ] && BOOT_ROOT="/flash"
 [ -z "$UPDATE_DIR" ] && UPDATE_DIR="/storage/.update"
+
 UPDATE_DTB_IMG="$UPDATE_DIR/dtb.img"
-UPDATE_DTB=`ls -1 "$UPDATE_DIR"/*.dtb 2>/dev/null | head -n 1`
+UPDATE_DTB="$(ls -1 "$UPDATE_DIR"/*.dtb 2>/dev/null | head -n 1)"
+
 [ -z "$BOOT_PART" ] && BOOT_PART=$(df "$BOOT_ROOT" | tail -1 | awk {' print $1 '})
 if [ -z "$BOOT_DISK" ]; then
   case $BOOT_PART in
@@ -40,14 +27,13 @@ mount -o rw,remount $BOOT_ROOT
 for arg in $(cat /proc/cmdline); do
   case $arg in
     boot=*)
-      echo "Updating BOOT partition label..."
       boot="${arg#*=}"
       case $boot in
         /dev/mmc*)
-          LD_LIBRARY_PATH="$SYSTEM_ROOT/lib" $SYSTEM_ROOT/usr/sbin/fatlabel $boot "LIBREELEC"
+          BOOT_UUID="$(blkid $boot | sed 's/.* UUID="//;s/".*//g')"
           ;;
-        LABEL=*)
-          LD_LIBRARY_PATH="$SYSTEM_ROOT/lib" $SYSTEM_ROOT/usr/sbin/fatlabel $($SYSTEM_ROOT/usr/sbin/findfs $boot) "LIBREELEC"
+        UUID=*|LABEL=*)
+          BOOT_UUID="$(blkid | sed 's/"//g' | grep -m 1 -i " $boot " | sed 's/.* UUID=//;s/ .*//g')"
           ;;
       esac
 
@@ -70,7 +56,7 @@ for arg in $(cat /proc/cmdline); do
             dd if=/dev/zero of=/dev/dtb bs=256k count=1 status=none
             dd if="$UPDATE_DTB_SOURCE" of=/dev/dtb bs=256k status=none
             ;;
-          /dev/mmc*|LABEL=*)
+          /dev/mmc*|LABEL=*|UUID=*)
             cp -f "$UPDATE_DTB_SOURCE" "$BOOT_ROOT/dtb.img"
             ;;
         esac
@@ -86,15 +72,15 @@ for arg in $(cat /proc/cmdline); do
         fi
       done
       ;;
+
     disk=*)
-      echo "Updating DISK partition label..."
       disk="${arg#*=}"
       case $disk in
         /dev/mmc*)
-          LD_LIBRARY_PATH="$SYSTEM_ROOT/lib" $SYSTEM_ROOT/usr/sbin/e2label $disk "STORAGE"
+          DISK_UUID="$(blkid $disk | sed 's/.* UUID="//;s/".*//g')"
           ;;
-        LABEL=*)
-          LD_LIBRARY_PATH="$SYSTEM_ROOT/lib" $SYSTEM_ROOT/usr/sbin/e2label $($SYSTEM_ROOT/usr/sbin/findfs $disk) "STORAGE"
+        UUID=*|LABEL=*)
+          DISK_UUID="$(blkid | sed 's/"//g' | grep -m 1 -i " $disk " | sed 's/.* UUID=//;s/ .*//g')"
           ;;
       esac
       ;;
@@ -109,6 +95,10 @@ fi
 if [ -f $SYSTEM_ROOT/usr/share/bootloader/boot.ini ]; then
   echo "Updating boot.ini..."
   cp -p $SYSTEM_ROOT/usr/share/bootloader/boot.ini $BOOT_ROOT/boot.ini
+  sed -e "s/@BOOT_UUID@/$BOOT_UUID/" \
+      -e "s/@DISK_UUID@/$DISK_UUID/" \
+      -i $BOOT_ROOT/boot.ini
+
   if [ -f $SYSTEM_ROOT/usr/share/bootloader/config.ini ]; then
     if [ ! -f $BOOT_ROOT/config.ini ]; then
       echo "Creating config.ini..."

@@ -1,32 +1,13 @@
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-present Team LibreELEC
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="libretro-stella"
-PKG_VERSION="3a79356"
-PKG_SHA256="a0f62116b9521f6b65f995f147e1bdb485dba6a6547e5ca15c58556f93c648f9"
-PKG_ARCH="any"
+PKG_VERSION="6a8e20909e0a39a4e01f9102dc935113e38cd62b"
+PKG_SHA256="e179fa0e59f50e8972ea0a60832e72c3adfac850314bbe6d7833a2f19dbcd1fe"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/stella-libretro"
 PKG_URL="https://github.com/libretro/stella-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="stella-libretro-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="game.libretro.stella: Stella for Kodi"
 PKG_LONGDESC="game.libretro.stella: Stella for Kodi"
 
 PKG_LIBNAME="stella_libretro.so"

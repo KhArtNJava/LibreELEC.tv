@@ -33,6 +33,9 @@
         # neon-vfpv4.
         TARGET_FPU="neon-fp16"
         TARGET_FEATURES="32bit"
+
+        # Use linaro toolchain to build kernel
+        KERNEL_LINARO_TOOLCHAIN="arm-linux-gnueabihf"
         ;;
     esac
 
@@ -97,7 +100,7 @@
   # Displayserver to use (x11 / no)
     DISPLAYSERVER="no"
 
-  # Windowmanager to use (ratpoison / fluxbox / none)
+  # Windowmanager to use (fluxbox / none)
     WINDOWMANAGER="none"
 
   # Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia)

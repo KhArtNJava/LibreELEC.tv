@@ -1,32 +1,13 @@
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-present Team LibreELEC
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="libretro-tgbdual"
-PKG_VERSION="e1f8348"
-PKG_SHA256="8eeb4585f527613bf87f91881a858a572b02683a6b953c3b8b46012289d112fe"
-PKG_ARCH="any"
+PKG_VERSION="0a644e78e71c2aae33be36abaa7bc6e79bbf497e"
+PKG_SHA256="714faad84ed21d221f1d8884c26bd8b6a9863d06b79c9f5cda0ff3b1d9f94893"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/tgbdual-libretro"
 PKG_URL="https://github.com/libretro/tgbdual-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="tgbdual-libretro-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="game.libretro.tgbdual: tgbdual for Kodi"
 PKG_LONGDESC="game.libretro.tgbdual: tgbdual for Kodi"
 
 PKG_LIBNAME="tgbdual_libretro.so"

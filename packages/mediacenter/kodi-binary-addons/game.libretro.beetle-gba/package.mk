@@ -1,32 +1,16 @@
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-present Team LibreELEC
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="game.libretro.beetle-gba"
-PKG_VERSION="df02528"
-PKG_SHA256="3f4c57991187ae921db8df01ba2767bed04a42089c1a2f7b87eeb15b3a31bde5"
-PKG_REV="105"
+PKG_VERSION="a04e776f38316c7b4f9bad5dc71d441dec9c248c"
+PKG_SHA256="40f14eef76da6027ecfb95b46abeedc4f4ff6fb088be9c8c1bbbd921eda3ccb8"
+PKG_REV="111"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/kodi-game/game.libretro.beetle-gba"
 PKG_URL="https://github.com/kodi-game/game.libretro.beetle-gba/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain kodi-platform libretro-beetle-gba"
 PKG_SECTION=""
-PKG_SHORTDESC="game.libretro.beetle-gba: Beetle GBA for Kodi"
 PKG_LONGDESC="game.libretro.beetle-gba: Beetle GBA for Kodi"
 
 PKG_IS_ADDON="yes"

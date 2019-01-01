@@ -1,24 +1,10 @@
-################################################################################
-#      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
-#
-#  OpenELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  OpenELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+# Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="pvr.nextpvr"
-PKG_VERSION="de30ff2"
-PKG_SHA256="a468a22b7d9e709950cd24b9c9d6ce025d91e2e5509fc4a39f7ffd35e163ed3d"
+PKG_VERSION="42a9a4b8ee9c0cfb94ad0d68dc23f816c4b8ec18"
+PKG_SHA256="caa7203a1e6d986d1526692594c582346852f615d70e12badd64946dbacc933b"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

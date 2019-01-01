@@ -1,33 +1,15 @@
-################################################################################
-#      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
-#
-#  OpenELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  OpenELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+# Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="RTL8812AU"
-PKG_VERSION="da70677"
-PKG_SHA256="2a8950db3314833b32cf7ea2720509d05210ce11daa01d8f19c2ecc70c705fe2"
-PKG_ARCH="any"
+PKG_VERSION="61d0cd95afc01eae64da0c446515803910de1a00"
+PKG_SHA256="8d36737540b1a47e56174ced61194f3b596999609ce8c18ac466dbd42b48bc0b"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/paspro/rtl8812au"
 PKG_URL="https://github.com/paspro/rtl8812au/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="rtl8812au-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain linux"
 PKG_NEED_UNPACK="$LINUX_DEPENDS"
-PKG_SECTION="driver"
-PKG_SHORTDESC="Realtek RTL8812AU Linux 3.x driver"
 PKG_LONGDESC="Realtek RTL8812AU Linux 3.x driver"
 PKG_IS_KERNEL_PKG="yes"
 

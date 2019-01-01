@@ -1,32 +1,13 @@
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-present Team LibreELEC
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="libretro-beetle-pcfx"
-PKG_VERSION="11be243"
-PKG_SHA256="ae020825ca7f50686daad87ab68a20a11ffc1d8b96b662308b512a607ad34b37"
-PKG_ARCH="any"
+PKG_VERSION="84b7ca6af37525af126069f812d53784bc1702fe"
+PKG_SHA256="30b85929a9b9d23c730c26ea823ba9a3a9963f4db18698025874e247ed9473fa"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://github.com/libretro/beetle-pcfx-libretro"
 PKG_URL="https://github.com/libretro/beetle-pcfx-libretro/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="beetle-pcfx-libretro-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
-PKG_SECTION="emulation"
-PKG_SHORTDESC="Standalone port of Mednafen PCFX to libretro"
 PKG_LONGDESC="Standalone port of Mednafen PCFX to libretro"
 
 PKG_LIBNAME="mednafen_pcfx_libretro.so"

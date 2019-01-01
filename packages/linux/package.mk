@@ -1,31 +1,14 @@
-################################################################################
-#      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
-#
-#  OpenELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  OpenELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+# Copyright (C) 2017-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="linux"
-PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kernel.org"
 PKG_DEPENDS_HOST="ccache:host"
 PKG_DEPENDS_TARGET="toolchain cpio:host kmod:host pciutils xz:host wireless-regdb keyutils $KERNEL_EXTRA_DEPENDS_TARGET"
 PKG_DEPENDS_INIT="toolchain"
 PKG_NEED_UNPACK="$LINUX_DEPENDS"
-PKG_SECTION="linux"
-PKG_SHORTDESC="linux26: The Linux kernel 2.6 precompiled kernel binary image and modules"
 PKG_LONGDESC="This package contains a precompiled kernel image and the modules."
 PKG_IS_KERNEL_PKG="yes"
 
@@ -36,32 +19,33 @@ case "$LINUX" in
     PKG_VERSION="95ba9d626c0fce672caa296f5911ab9190881642"
     PKG_SHA256="df34b086993fd3552efae92d84d28990a61a1ca79a8703a4b64241ab80e3b6db"
     PKG_URL="https://github.com/LibreELEC/linux-amlogic/archive/$PKG_VERSION.tar.gz"
-    PKG_SOURCE_DIR="linux-amlogic-$PKG_VERSION"
+    PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
     PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET aml-dtbtools:host u-boot-tools-aml:host"
     PKG_BUILD_PERF="no"
     ;;
   amlogic-3.14)
-    PKG_VERSION="29941550f05282411c00c437b4c18bb5c6319d63"
-    PKG_SHA256="c97da3b9cd3d34432e69aeaa740076afee977b9ed7c0d0a8475f3f019288dd36"
+    PKG_VERSION="6d8fbb4ee61a7779ac57b5961e076f0c63ff8b65"
+    PKG_SHA256="ef05c88779c893f92e92e5315d0e5396f34c32289726c301fae7ffe8c4214227"
     PKG_URL="https://github.com/LibreELEC/linux-amlogic/archive/$PKG_VERSION.tar.gz"
-    PKG_SOURCE_DIR="linux-amlogic-$PKG_VERSION"
+    PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
     PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET aml-dtbtools:host"
     PKG_BUILD_PERF="no"
     ;;
   rockchip-4.4)
-    PKG_VERSION="eae92ae2b930999857df47c3057327c1c490454b"
-    PKG_SHA256="da453ca6ecefc3719a1165bc7b08fe00fc2b50ab64f6289ef6f3670a9fc1ceca"
+    PKG_VERSION="aa8bacf821e5c8ae6dd8cae8d64011c741659945"
+    PKG_SHA256="a2760fe89a15aa7be142fd25fb08ebd357c5d855c41f1612cf47c6e89de39bb3"
     PKG_URL="https://github.com/rockchip-linux/kernel/archive/$PKG_VERSION.tar.gz"
-    PKG_SOURCE_DIR="kernel-$PKG_VERSION"
+    PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
     ;;
   raspberrypi)
-    PKG_VERSION="29653ef5475124316b9284adb6cbfc97e9cae48f" # 4.14.37
-    PKG_SHA256="20e596c9bfaa739bf9178431c9fa332429b63671368826361b1a46ccf3354236"
+    PKG_VERSION="e75aca6e66f6091dd3b9c316750025c8e9684f16" # 4.19.12
+    PKG_SHA256="0f29fb52dc4d7fd705c9215e8a910a6e854b8014e697bdd7b6ce4854d7e342f4"
     PKG_URL="https://github.com/raspberrypi/linux/archive/$PKG_VERSION.tar.gz"
+    PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
     ;;
   *)
-    PKG_VERSION="4.14.37"
-    PKG_SHA256="8197e7ed3620713e412905430a7bf93e2048384042ffba189a66f0eeb6908e92"
+    PKG_VERSION="4.19.12"
+    PKG_SHA256="4d81ac539d62617f5b52f25971749d8c6d3a200deee76898bb99be8492999b77"
     PKG_URL="https://www.kernel.org/pub/linux/kernel/v4.x/$PKG_NAME-$PKG_VERSION.tar.xz"
     PKG_PATCH_DIRS="default"
     ;;
@@ -69,9 +53,9 @@ esac
 
 PKG_KERNEL_CFG_FILE=$(kernel_config_path)
 
-if [ "$TARGET_KERNEL_ARCH" = "arm64" -a "$TARGET_ARCH" = "arm" ]; then
-  PKG_DEPENDS_HOST="$PKG_DEPENDS_HOST gcc-linaro-aarch64-linux-gnu:host"
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET gcc-linaro-aarch64-linux-gnu:host"
+if [ -n "$KERNEL_LINARO_TOOLCHAIN" ]; then
+  PKG_DEPENDS_HOST="$PKG_DEPENDS_HOST gcc-linaro-$KERNEL_LINARO_TOOLCHAIN:host"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET gcc-linaro-$KERNEL_LINARO_TOOLCHAIN:host"
   HEADERS_ARCH=$TARGET_ARCH
 fi
 
@@ -80,10 +64,8 @@ if [ "$PKG_BUILD_PERF" != "no" ] && grep -q ^CONFIG_PERF_EVENTS= $PKG_KERNEL_CFG
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET binutils elfutils libunwind zlib openssl"
 fi
 
-PKG_MAKE_OPTS_HOST="ARCH=${HEADERS_ARCH:-$TARGET_KERNEL_ARCH} headers_check"
-
 if [ "$TARGET_ARCH" = "x86_64" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET intel-ucode:host kernel-firmware"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET intel-ucode:host kernel-firmware elfutils:host"
 fi
 
 if [ "$BUILD_ANDROID_BOOTIMG" = "yes" ]; then
@@ -91,12 +73,6 @@ if [ "$BUILD_ANDROID_BOOTIMG" = "yes" ]; then
 fi
 
 post_patch() {
-  sed -i -e "s|^HOSTCC[[:space:]]*=.*$|HOSTCC = $TOOLCHAIN/bin/host-gcc|" \
-         -e "s|^HOSTCXX[[:space:]]*=.*$|HOSTCXX = $TOOLCHAIN/bin/host-g++|" \
-         -e "s|^ARCH[[:space:]]*?=.*$|ARCH = $TARGET_KERNEL_ARCH|" \
-         -e "s|^CROSS_COMPILE[[:space:]]*?=.*$|CROSS_COMPILE = $TARGET_KERNEL_PREFIX|" \
-         $PKG_BUILD/Makefile
-
   cp $PKG_KERNEL_CFG_FILE $PKG_BUILD/.config
   if [ ! "$BUILD_ANDROID_BOOTIMG" = "yes" ]; then
     sed -i -e "s|^CONFIG_INITRAMFS_SOURCE=.*$|CONFIG_INITRAMFS_SOURCE=\"$BUILD/image/initramfs.cpio\"|" $PKG_BUILD/.config
@@ -141,8 +117,27 @@ post_patch() {
   fi
 }
 
+make_host() {
+  make \
+    ARCH=${HEADERS_ARCH:-$TARGET_KERNEL_ARCH} \
+    HOSTCC="$TOOLCHAIN/bin/host-gcc" \
+    HOSTCXX="$TOOLCHAIN/bin/host-g++" \
+    HOSTCFLAGS="$HOST_CFLAGS" \
+    HOSTCXXFLAGS="$HOST_CXXFLAGS" \
+    HOSTLDFLAGS="$HOST_LDFLAGS" \
+    headers_check
+}
+
 makeinstall_host() {
-  make ARCH=${HEADERS_ARCH:-$TARGET_KERNEL_ARCH} INSTALL_HDR_PATH=dest headers_install
+  make \
+    ARCH=${HEADERS_ARCH:-$TARGET_KERNEL_ARCH} \
+    HOSTCC="$TOOLCHAIN/bin/host-gcc" \
+    HOSTCXX="$TOOLCHAIN/bin/host-g++" \
+    HOSTCFLAGS="$HOST_CFLAGS" \
+    HOSTCXXFLAGS="$HOST_CXXFLAGS" \
+    HOSTLDFLAGS="$HOST_LDFLAGS" \
+    INSTALL_HDR_PATH=dest \
+    headers_install
   mkdir -p $SYSROOT_PREFIX/usr/include
     cp -R dest/include/* $SYSROOT_PREFIX/usr/include
 }
@@ -159,15 +154,17 @@ pre_make_target() {
     sed -i "s|CONFIG_EXTRA_FIRMWARE=.*|CONFIG_EXTRA_FIRMWARE=\"${FW_LIST}\"|" $PKG_BUILD/.config
   fi
 
-  make oldconfig
+  kernel_make oldconfig
 
-  # regdb
-  cp $(get_build_dir wireless-regdb)/db.txt $PKG_BUILD/net/wireless/db.txt
+  # regdb (backward compatability with pre-4.15 kernels)
+  if grep -q ^CONFIG_CFG80211_INTERNAL_REGDB= $PKG_BUILD/.config ; then
+    cp $(get_build_dir wireless-regdb)/db.txt $PKG_BUILD/net/wireless/db.txt
+  fi
 }
 
 make_target() {
-  LDFLAGS="" make modules
-  LDFLAGS="" make INSTALL_MOD_PATH=$INSTALL/$(get_kernel_overlay_dir) DEPMOD="$TOOLCHAIN/bin/depmod" modules_install
+  kernel_make modules
+  kernel_make INSTALL_MOD_PATH=$INSTALL/$(get_kernel_overlay_dir) modules_install
   rm -f $INSTALL/$(get_kernel_overlay_dir)/lib/modules/*/build
   rm -f $INSTALL/$(get_kernel_overlay_dir)/lib/modules/*/source
 
@@ -209,15 +206,18 @@ make_target() {
   ( cd $ROOT
     rm -rf $BUILD/initramfs
     $SCRIPTS/install initramfs
-  )
+  ) || die "FAILURE: Building initramfs"
 
   if [ "$BOOTLOADER" = "u-boot" -a -n "$KERNEL_UBOOT_EXTRA_TARGET" ]; then
     for extra_target in "$KERNEL_UBOOT_EXTRA_TARGET"; do
-      LDFLAGS="" make $extra_target
+      kernel_make $extra_target
     done
   fi
 
-  LDFLAGS="" make $KERNEL_TARGET $KERNEL_MAKE_EXTRACMD
+  # the modules target is required to get a proper Module.symvers
+  # file with symbols from built-in and external modules.
+  # Without that it'll contain only the symbols from the kernel
+  kernel_make $KERNEL_TARGET $KERNEL_MAKE_EXTRACMD modules
 
   if [ "$BUILD_ANDROID_BOOTIMG" = "yes" ]; then
     DTB_BLOBS=($(ls arch/$TARGET_KERNEL_ARCH/boot/dts/amlogic/*.dtb 2>/dev/null || true))
@@ -296,8 +296,9 @@ makeinstall_init() {
 
 post_install() {
   mkdir -p $INSTALL/$(get_full_firmware_dir)/
-    ln -sf /storage/.config/firmware/ $INSTALL/$(get_full_firmware_dir)/updates
 
-  # bluez looks in /etc/firmware/
-    ln -sf /$(get_full_firmware_dir)/ $INSTALL/etc/firmware
+  # regdb and signature is now loaded as firmware by 4.15+
+    if grep -q ^CONFIG_CFG80211_REQUIRE_SIGNED_REGDB= $PKG_BUILD/.config; then
+      cp $(get_build_dir wireless-regdb)/regulatory.db{,.p7s} $INSTALL/$(get_full_firmware_dir)
+    fi
 }
